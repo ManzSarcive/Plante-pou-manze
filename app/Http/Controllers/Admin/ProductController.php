@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Panier;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ProductsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('admin.products.index');
+        $products = Product::all();
+        return view('admin.products.index', compact('products'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        $paniers = Panier::all();
+        return view('admin.products.create', compact('paniers'));
     }
 
     /**

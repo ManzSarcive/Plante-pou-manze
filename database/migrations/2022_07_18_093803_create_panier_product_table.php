@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('guest_number');
-            $table->string('status')->default('available');
-            $table->string('location');
-            $table->timestamps();
+        Schema::create('panier_product', function (Blueprint $table) {
+            $table->foreignId('panier_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+
+
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paniers');
+        Schema::dropIfExists('panier_product');
     }
 };

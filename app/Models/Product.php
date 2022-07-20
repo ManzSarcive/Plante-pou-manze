@@ -5,7 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paniers extends Model
+class Product extends Model
 {
     use HasFactory;
+
+    public function paniers()
+    {
+        return $this->belongsToMany(Panier::class, 'panier_product');
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Models\Panier;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationStoreRequest;
 
 class ReservationController extends Controller
 {
@@ -16,8 +17,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservation = Reservation::all();
-        return view('admin.reservation.index', compact('reservation'));
+        $reservations = Reservation::all();
+        return view('admin.reservation.index', compact('reservations'));
     }
 
     /**
@@ -37,9 +38,11 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationStoreRequest $request)
     {
-        //
+        Reservation::create($request->validated());
+
+        return to_route('admin.reservations.index')->with('success', 'Réservation créé avec succès') ;
     }
 
     /**

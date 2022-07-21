@@ -46,8 +46,9 @@ class PanierController extends Controller
             'description' => $request->description,
             'image' => $image,
             'price' => $request->price,
+            'status' => $request->status
         ]);
-        return to_route('admin.paniers.index');
+        return to_route('admin.paniers.index')->with('success', 'Panier créé avec succès');
     }
 
     /**
@@ -98,8 +99,9 @@ class PanierController extends Controller
             'description' => $request->description,
             'image' => $image,
             'price' => $request->price,
+            'status' => $request->status,
         ]);
-        return to_route('admin.paniers.index');
+        return to_route('admin.paniers.index')->with('success', 'Panier modifié avec succès');
     }
 
     /**
@@ -112,8 +114,9 @@ class PanierController extends Controller
     {
         Storage::delete($panier->image);
         $panier->delete();
+        $panier->reservations()->delete();
 
-        return to_route('admin.paniers.index');
+        return to_route('admin.paniers.index')->with('danger', 'Panier supprimé avec succès');
 
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\DateBetween;
+use App\Rules\TimeBetween;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PanierStoreRequest extends FormRequest
+class ReservationStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +26,14 @@ class PanierStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'image' => ['required', 'image'],
-            'description' => ['required'],
-            'price' => ['required'],
-            'status' => ['required']
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'email' => ['required', 'email'],
+            'tel_number' => ['required'],
+            'res_date' => ['required', 'date', new DateBetween, new TimeBetween],
+            'panier_id' => ['required'],
+            
+
         ];
     }
 }

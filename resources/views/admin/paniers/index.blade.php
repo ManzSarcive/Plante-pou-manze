@@ -11,6 +11,7 @@
       <th scope="col">Image</th>
       <th scope="col">Description</th>
       <th scope="col">Price</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
 
 
@@ -26,6 +27,8 @@
       <td><img style="width: 100px;" class="" img-fluid"" src="{{ Storage::url($panier->image) }}"></td>
       <td>{{ $panier->description }} </td>
       <td>{{ $panier->price }}</td>
+      <td>{{ $panier->status->name }}</td>
+      {{-- <td>{{ $panier->status->name }}</td> --}}
       <td> <a href="{{ route('admin.paniers.edit', $panier->id) }}"><i class="fa-solid fa-pencil"></i></a>
         <form method="POST" action="{{ route('admin.paniers.destroy', $panier->id) }}" onsubmit="return confirm('Etes vous sure');">
           @csrf

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Panier;
+use App\Enums\PanierStatus;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReservationStoreRequest;
+use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
@@ -28,7 +31,8 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $paniers = Panier::all();
+        $paniers = Panier::where('status', PanierStatus::Available)->get();
+
         return view('admin.reservation.create', compact('paniers'));
     }
 
@@ -40,9 +44,31 @@ class ReservationController extends Controller
      */
     public function store(ReservationStoreRequest $request)
     {
+
+
+        //     $panier = Panier::findOrFail($request->panier_id);
+        //     if($request->panier_id > $panier->panier_id){
+        //         return back()->with('warning', 'Choisissez un autre panier');
+        //     }
+
+
+        //    $request_date = Carbon::parse($request->res_date);
+        //    foreach($panier->reservation as $res){
+        //         if($res->res_date->format('Y-m-d') == $request_date->format('Y-m-d')){
+        //             return back()->with('warning', 'Ce panier est réservé pour cette date');
+        //         }
+        //    }
+
+        $panierRequest = $request->panier_id;
+        $result = Reservation::query()
+            ->where('panier_id', '=', $panierRequest)
+            ->get();
+        if (count($result) != 0) {
+            return back()->with('danger', 'déjà reservé');
+        }
         Reservation::create($request->validated());
 
-        return to_route('admin.reservations.index')->with('success', 'Réservation créé avec succès') ;
+        return to_route('admin.reservations.index')->with('success', 'Réservation créé avec succès');
     }
 
     /**

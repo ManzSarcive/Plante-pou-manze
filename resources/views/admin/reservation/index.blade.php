@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a class="btn btn-primary" href="{{route ('admin.reservations.create')}}" role="button">Ajouter une reservation</a>
+<a class="btn btn-primary mt-4 mb-4" href="{{route ('admin.reservations.create')}}" role="button">Ajouter une reservation</a>
 
 
 <table class="table">
@@ -10,7 +10,7 @@
     <tr>
       <th scope="col">Nom</th>
       <th scope="col">Email</th>
-      <th scope="col">Date</th>
+      <th scope="col">Numéro de tel</th>
       <th scope="col">Date</th>
       <th scope="col">Panier</th>
       

@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/paniers', ['App\Http\Controllers\Frontend\PanierController', 'index'])->name('paniers.index');
+Route::get('/paniers/{panier}', ['App\Http\Controllers\Frontend\PanierController', 'show'])->name('paniers.show');
+Route::get('/reservation/step-one', ['App\Http\Controllers\Frontend\ReservationController', 'stepOne'])->name('reservations.step.one');
+Route::post('/reservation/step-one', ['App\Http\Controllers\Frontend\ReservationController', 'storeStepOne'])->name('reservations.store.step.one');
+Route::get('/reservation/step-two', ['App\Http\Controllers\Frontend\ReservationController', 'stepTwo'])->name('reservations.step.two');
+Route::post('/reservation/step-two', ['App\Http\Controllers\Frontend\ReservationController', 'storeStepTwo'])->name('reservations.store.step.two');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

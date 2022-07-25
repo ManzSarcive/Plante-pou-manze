@@ -28,6 +28,14 @@
       <td>{{$reservation->tel_number}}</td>
       <td>{{$reservation->res_date}}</td>
       <td>{{$reservation->panier->name }}</td>
+      <td> <a href="{{ route('admin.reservations.edit', $reservation->id) }}"><i class="fa-solid fa-pencil"></i></a>
+        <form method="POST" action="{{ route('admin.reservations.destroy', $reservation->id) }}" onsubmit="return confirm('Etes vous sure');">
+          @csrf
+          @method('DELETE')
+          <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
+
+        </form>
+      </td>
       
     </tr>
     

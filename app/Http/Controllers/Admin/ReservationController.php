@@ -88,9 +88,11 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Reservation $reservation)
     {
-        //
+        $paniers = Panier::where('status', PanierStatus::Available)->get();
+
+        return view('admin.reservation.edit', compact('reservation', 'paniers'));
     }
 
     /**
@@ -100,9 +102,20 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservationStoreRequest $request, Reservation $reservation)
     {
-        //
+        $panierRequest = $request->panier_id;
+        $result = Reservation::query()
+            ->where('panier_id', '=', $panierRequest)
+            ->get();
+        if (count($result) != 0) {
+            return back()->with('danger', 'déjà reservé');
+        }
+
+        $reservation->update($request->validated());
+        return to_route('admin.reservations.index')->with('success', 'Réservation modifiée avec succès');
+
+
     }
 
     /**
@@ -111,8 +124,11 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Reservation $reservation)
     {
-        //
+        $reservation->delete();
+
+        return to_route('admin.reservations.index')->with('warning', 'Réservation supprimée avec succès');
+
     }
 }

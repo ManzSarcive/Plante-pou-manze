@@ -15,7 +15,7 @@
 </div>
 <div class="text-center">
     <h3 class="mt-4">Chaque semaine, des paniers de fruits et légumes vraiment bons</h3>
-    <p class="mt-4">Le bon pour Potager City, c’est d’abord du goût ! Un produit qui a du goût,
+    <p class="mt-4">Planté pou manzé c’est d’abord du goût ! Un produit qui a du goût,
         c’est un produit choisi avec bon sens. En direct des producteurs grâce à un système en flux-tendu,
         pas de stock mais toujours de saison !</p>
 </div>

@@ -24,10 +24,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Nos paniers</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('paniers.index') }}">Nos paniers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Faire une réservation</a>
+          <a class="nav-link" href="{{ route('reservations.step.one') }}">Faire une réservation</a>
         </li>
       </ul>
     </div>

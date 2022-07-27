@@ -1,7 +1,7 @@
 @extends('layouts.guest')
 
 @section('content')
-<div>
+<div class="mt-5 ms-5">
     <div class="text-center">
         <div class="card mb-3" style="max-width: 540px;">
             <div class="row g-0">
@@ -62,7 +62,7 @@
 
     <div class="mb-3">
       <label for="res_date" class="form-label">Reservation Date</label>
-      <input type="datetime-local" id="res_date" name="res_date" value="{{ $reservation->res_date ?? '' }}">
+      <input type="datetime-local" id="res_date" name="res_date" min="{{ $min_date->format('Y-m-d\TH:i:s') }}" max="{{ $max_date->format('Y-m-d\TH:i:s') }}" value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}">
 
     </div>
 
@@ -73,7 +73,7 @@
     
 
 
-    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-primary">Next</button>
   </form>
 </div>
                 </div>

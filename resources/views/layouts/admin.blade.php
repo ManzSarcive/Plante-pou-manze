@@ -52,7 +52,7 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{{ route('admin.index') }}">Logo</a>
+      <a class="navbar-brand" href="{{ route('admin.index') }}"><img src="/image/zarlorlater.png" style="width: 100px"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

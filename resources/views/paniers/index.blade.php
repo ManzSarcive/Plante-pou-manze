@@ -2,6 +2,9 @@
 
 @section('content')
 
+
+<h1 class="text-center">Faites votre choix parmis une liste de paniers délicieux !</h1>
+
 <div class="container">
     <div class="row mt-5">
         @foreach ($paniers as $panier)

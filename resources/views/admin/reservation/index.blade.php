@@ -5,7 +5,7 @@
 <a class="btn btn-primary mt-4 mb-4" href="{{route ('admin.reservations.create')}}" role="button">Ajouter une reservation</a>
 
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Nom</th>
